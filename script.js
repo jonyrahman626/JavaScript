@@ -1394,24 +1394,24 @@
 
  // Call Back Function
 
-function times(){
-    let ms = 3000 + new Date().getTime();
-    while(new Date() < ms){}
-}
+ //  function times() {
+ //      let ms = 3000 + new Date().getTime();
+ //      while (new Date() < ms) {}
+ //  }
 
- function registration() {
-     console.log('Registered Completed');
-     times();
+ function registration(callback) {
+     setTimeout(() => {
+         console.log('Registered Completed');
+         callback()
+     }, 2000)
  }
 
  function sendEmail() {
      console.log('Email Send Completed');
-     times();
  }
 
  function login() {
      console.log('Login Completed');
-     times();
  }
 
  function getUserData() {
@@ -1423,15 +1423,12 @@ function times(){
  }
 
 
- registration()
- sendEmail()
- login()
- getUserData()
- displayUserData()
+ registration(function () {
+     sendEmail()
+     login()
+     getUserData()
+     displayUserData()
+ })
 
 
  console.log('Others Work');
-
-
-
-
